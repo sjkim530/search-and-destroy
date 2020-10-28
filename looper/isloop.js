@@ -1,8 +1,16 @@
 'use strict';
 
 //Complete this algo
-const isLoop = (linkedlist) => {
-
+const isLoop = (linkedlist, array = []) => {
+  array.push(linkedlist.head.value)
+console.log('array', array)
+  if(linkedlist.head.next === null) return false
+  else if(array.includes(linkedlist.head.next.value)) return true
+  else {
+    linkedlist.head = linkedlist.head.next
+    console.log('new head node', linkedlist)
+    return isLoop(linkedlist, array)
+  }
 };
 
 
